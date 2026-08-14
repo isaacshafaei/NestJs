@@ -928,3 +928,119 @@ Duplicate email
 
 Then we'll have a much more professional API.
 ---
+## Short Note — Steps 12–16
+
+### Step 12 — Error Handling
+
+Added:
+
+```text
+404 → resource doesn't exist
+409 → duplicate email
+```
+
+Used:
+
+```typescript
+NotFoundException
+ConflictException
+```
+
+Before updating/deleting:
+
+```typescript
+const user = await prisma.user.findUnique({ where: { id } });
+
+if (!user) {
+  throw new NotFoundException('User not found');
+}
+```
+
+Before creating an Expense, verify:
+
+```text
+userId   → User exists
+projectId → Project exists
+```
+
+---
+
+### Step 13 — Testing
+
+Tested all:
+
+```text
+Users CRUD
+Projects CRUD
+Expenses CRUD
+Validation
+Relationships
+404 / 409 errors
+```
+
+---
+
+### Step 14 — Refactoring
+
+Changed Controllers to use DTOs:
+
+```text
+Controller
+   ↓
+DTO + Validation
+   ↓
+Service
+   ↓
+Prisma
+   ↓
+MySQL
+```
+
+Removed unused `.spec.ts` files.
+
+---
+
+### Step 15 — Final Review
+
+Verified:
+
+```bash
+npm run start:dev
+npx prisma validate
+npx prisma generate
+```
+
+Everything works with **0 TypeScript errors**.
+
+---
+
+### Step 16 — README
+
+Added:
+
+```text
+Project description
+Technologies
+Architecture
+Database relationships
+API endpoints
+Validation
+Error handling
+Setup instructions
+```
+
+### Current Status
+
+```text
+✅ CRUD
+✅ MySQL + Prisma
+✅ Relationships
+✅ DTOs + Validation
+✅ Error Handling
+✅ Testing
+✅ Refactoring
+✅ README
+```
+
+**Next → Interview preparation.**
+
