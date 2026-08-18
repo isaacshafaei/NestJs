@@ -50,6 +50,10 @@ Default response:
 Hello World!
 ```
 
+Required NestJS packages 
+```
+npm install @nestjs/common @nestjs/core
+```
 ### Generate NestJS components
 
 Example:
@@ -1043,4 +1047,25 @@ Setup instructions
 ```
 
 **Next → Interview preparation.**
+---
+users
+┌────┬───────┬──────────────────┐
+│ id │ name  │ email            │
+├────┼───────┼──────────────────┤
+│ 1  │ Isaac │ isaac@example.com│
+└────┴───────┴──────────────────┘
 
+projects
+┌────┬────────────────────┐
+│ id │ name               │
+├────┼────────────────────┤
+│ 1  │ Web Development    │
+└────┴────────────────────┘
+
+expenses
+┌────┬────────┬────────┬───────────┐
+│ id │ amount │ userId │ projectId │
+├────┼────────┼────────┼───────────┤
+│ 1  │ 100    │ 1      │ 1         │
+│ 2  │ 250    │ 1      │ 1         │
+└────┴────────┴────────┴───────────┘
