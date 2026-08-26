@@ -97,6 +97,10 @@ prisma/
 .env
 prisma.config.ts
 ```
+if here we have problem with version prisma 8 we can downgrade to 7.9.1 like below:
+```
+npm install prisma@7.9.1 @prisma/client@7.9.1
+```
 
 We are using **Prisma 7.9.1**.
 
