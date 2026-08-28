@@ -1051,27 +1051,24 @@ Setup instructions
 ```
 
 ---
-users
-┌────┬───────┬──────────────────┐
-│ id │ name  │ email            │
-├────┼───────┼──────────────────┤
-│ 1  │ Isaac │ isaac@example.com│
-└────┴───────┴──────────────────┘
+### users
 
-projects
-┌────┬────────────────────┐
-│ id │ name               │
-├────┼────────────────────┤
-│ 1  │ Web Development    │
-└────┴────────────────────┘
+| id | name  | email             |
+|----|-------|-------------------|
+| 1  | Isaac | isaac@example.com |
 
-expenses
-┌────┬────────┬────────┬───────────┐
-│ id │ amount │ userId │ projectId │
-├────┼────────┼────────┼───────────┤
-│ 1  │ 100    │ 1      │ 1         │
-│ 2  │ 250    │ 1      │ 1         │
-└────┴────────┴────────┴───────────┘
+### projects
+
+| id | name            |
+|----|-----------------|
+| 1  | Web Development |
+
+### expenses
+
+| id | amount | userId | projectId |
+|----|--------|--------|-----------|
+| 1  | 100    | 1      | 1         |
+| 2  | 250    | 1      | 1         |
 ---
 **Prisma Generate** creates the code needed to connect your app to the database.
 It reads your `schema.prisma` and creates **Prisma Client**.
