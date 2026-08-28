@@ -1053,24 +1053,25 @@ Setup instructions
 ---
 ### users
 
-| id | name  | email             |
-|----|-------|-------------------|
-| 1  | Isaac | isaac@example.com |
+| id | name  | email                     |
+|----|-------|---------------------------|
+| 1  | Isaac | isaacspirit333@gmail.com  |
 
 ### projects
 
 | id | name            |
 |----|-----------------|
-| 1  | Web Development |
+| 1  | web development |
 
 ### expenses
 
-| id | amount | userId | projectId |
-|----|--------|--------|-----------|
-| 1  | 100    | 1      | 1         |
-| 2  | 250    | 1      | 1         |
-
-
+| id | amount | description       | userId | projectId |
+|----|--------|-------------------|--------|-----------|
+| 1  | 650    | tutorial package  | 1      | 1         |
+| 2  | 350    | Server            | 1      | 1         |
+| 3  | 100    | Server            | 1      | 1         |
+---
+###Relations
 User 1 ────── N Expense N ────── 1 Project
 
 ---
