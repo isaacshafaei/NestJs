@@ -1071,7 +1071,8 @@ Setup instructions
 | 2  | 350    | Server            | 1      | 1         |
 | 3  | 100    | Server            | 1      | 1         |
 ---
-###Relations
+###Relations:  
+
 User 1 ────── N Expense N ────── 1 Project
 
 ---
