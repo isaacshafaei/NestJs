@@ -1050,7 +1050,6 @@ Setup instructions
 ✅ README
 ```
 
-**Next → Interview preparation.**
 ---
 users
 ┌────┬───────┬──────────────────┐
@@ -1073,3 +1072,9 @@ expenses
 │ 1  │ 100    │ 1      │ 1         │
 │ 2  │ 250    │ 1      │ 1         │
 └────┴────────┴────────┴───────────┘
+---
+**Prisma Generate** creates the code needed to connect your app to the database.
+It reads your `schema.prisma` and creates **Prisma Client**.
+Example: `prisma.user.findMany()` → gets users from the database.
+---
+
