@@ -82,4 +82,152 @@ For your **DDD + Hexagonal Architecture** learning, you should remember:
 
 The arrow toward Domain is important: **Domain should not depend on infrastructure.**
 ---
+### DDD — 3 concepts
 
+* **Entity** → An object with a **unique identity** that stays the same even if its data changes.
+  Example: `User(id=123)` — the user's name can change, but it's still the same user.
+
+* **Value Object** → An object defined by its **value, not identity**. Usually immutable.
+  Example: `Money(€50)` or `Address("Padova", "Italy")`.
+
+* **Aggregate** → A **group of related entities/value objects** treated as one unit, with one main entity called the **Aggregate Root**.
+  Example:
+
+  ```text
+  Order (Aggregate Root)
+   ├── OrderItem
+   ├── OrderItem
+   └── ShippingAddress
+  ```
+
+**Easy way to remember:**
+
+> **Entity = who/which one**
+> **Value Object = what value**
+> **Aggregate = group managed together**
+---
+### CQRS — very simple
+
+**CQRS = Command Query Responsibility Segregation**
+
+It means **separating operations that change data from operations that only read data**.
+
+```text
+Command → changes data
+          Create / Update / Delete
+
+Query   → reads data
+          Get / Search
+```
+
+Example:
+
+```text
+CreateOrder()  → Command
+GetOrder()     → Query
+CancelOrder()  → Command
+GetOrders()    → Query
+```
+
+### Why use CQRS?
+
+> We use CQRS to **separate reading and writing logic**, making complex systems easier to scale, maintain, and optimize.
+
+**Easy to remember:**
+
+> **Command = Change**
+> **Query = Read**
+---
+### Testing in DDD — very simple
+
+In DDD, we mainly test the **business rules in the Domain layer**.
+
+```text
+Domain
+  ↓
+Unit Tests
+  → Test business rules
+```
+
+For example:
+
+```text
+Order
+ ├── addItem()
+ ├── removeItem()
+ └── calculateTotal()
+```
+
+You test things like:
+
+* Can an order be created?
+* Can you add an item?
+* Is the total calculated correctly?
+* Can you cancel an already completed order?
+
+### Different types
+
+* **Unit tests** → test Domain logic independently. **Most important in DDD.**
+* **Integration tests** → test things like Repository + Database.
+* **End-to-End (E2E)** → test the whole application from API → database.
+
+**Easy way to remember:**
+
+> **Unit → Domain rules**
+> **Integration → Infrastructure**
+> **E2E → Whole system**
+---
+### Architecture Tests
+
+Architecture tests verify that your **code follows the architectural rules**.
+
+For example, you might have this rule:
+
+```text
+Presentation → Application → Domain ← Infrastructure
+```
+
+An architecture test can ensure that:
+
+```text
+❌ Domain → Database
+❌ Domain → NestJS Controller
+❌ Domain → Infrastructure
+
+✅ Application → Domain
+✅ Infrastructure → Domain
+```
+
+So you're testing **how the code is structured**, not whether a business calculation is correct.
+
+### Why is this important for a Junior?
+
+When you join a company, you might understand the architecture, but after working on the project for a few months, it's easy to accidentally write:
+
+```text
+Controller
+   ↓
+Database
+```
+
+instead of following:
+
+```text
+Controller
+   ↓
+Application
+   ↓
+Domain
+   ↓
+Infrastructure
+```
+
+Architecture tests **automatically catch these violations**.
+
+Think of it like:
+
+> **Unit tests:** "Does my code work correctly?"
+> **Architecture tests:** "Did I put my code in the right place?"
+
+For a junior, this is very useful because the **architecture tests act like a guardrail** while you're learning the company's codebase and architectural conventions.
+---
